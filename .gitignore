@@ -69,3 +69,5 @@ htmlcov/
 
 # TypeScript
 *.tsbuildinfo
+
+backend/reports/
