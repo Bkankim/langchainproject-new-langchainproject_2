@@ -6,7 +6,7 @@ import logging
 from typing import Dict, Any, Optional
 
 from app.db.session import get_db
-from app.db.crud import append_message, create_session, get_session
+from app.db.crud import append_message, create_session, get_session, save_task_result
 from app.tools.segment_tools import (
     extract_product_name,
     collect_review_data,
@@ -112,15 +112,29 @@ class SegmentAgent:
             import os
             pdf_filename = os.path.basename(context.pdf_path) if context.pdf_path else None
 
+            # 종합 보고서용 결과 데이터 구조화
+            result_data = {
+                "product_name": context.product_name,
+                "num_segments": len(context.segments),
+                "segments": context.segments
+            }
+
+            # DB에 태스크 결과 저장
+            with get_db() as db:
+                save_task_result(
+                    db,
+                    session_id=context.session_id,
+                    task_type="segment",
+                    result_data=result_data,
+                    product_name=context.product_name,
+                    pdf_path=context.pdf_path
+                )
+
             return {
                 "success": True,
                 "session_id": context.session_id,
                 "reply_text": reply_text,
-                "result_data": {
-                    "product_name": context.product_name,
-                    "segments": context.segments,
-                    "review_count": len(context.reviews)
-                },
+                "result_data": result_data,
                 "report_id": pdf_filename,  # PDF 다운로드용 (파일명만)
                 "download_url": f"/report/{pdf_filename}" if pdf_filename else None,
                 "errors": context.errors

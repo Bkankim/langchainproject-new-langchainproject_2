@@ -28,7 +28,7 @@ def extract_product_name(user_message: str) -> str:
     logger.info(f"제품명 추출 시도: {user_message}")
 
     # 간단한 패턴 매칭 (LLM 사용 가능하지만 비용 절감을 위해 룰 베이스)
-    # "XXX 구매자를 세그먼트", "XXX를 분류", "XXX 타겟" 등의 패턴
+    # "XXX 구매자를 세그먼트", "XXX를 분류", "XXX 타겟", "XXX 리뷰" 등의 패턴
 
     # 패턴 1: "XXX 구매자를"
     match = re.search(r'(.+?)\s*구매자', user_message)
@@ -49,6 +49,55 @@ def extract_product_name(user_message: str) -> str:
     if match:
         product_name = match.group(1).strip()
         logger.info(f"제품명 추출 성공 (패턴3): {product_name}")
+        return product_name
+
+    # 패턴 4: "XXX 리뷰" (리뷰 분석용)
+    # "아이폰16 리뷰", "갤럭시 리뷰 분석" 등
+    match = re.search(r'^([가-힣A-Za-z0-9\s]+?)\s*리뷰', user_message)
+    if match:
+        product_name = match.group(1).strip()
+        # "구매자들의", "에 대한" 등 불필요한 부분 제거
+        product_name = re.sub(r'(구매자들?의|에\s*대한|관련)\s*$', '', product_name).strip()
+        logger.info(f"제품명 추출 성공 (패턴4-리뷰): {product_name}")
+        return product_name
+
+    # 패턴 5: "XXX 감성 분석" (리뷰 분석용)
+    match = re.search(r'^([가-힣A-Za-z0-9\s]+?)\s*감성\s*분석', user_message)
+    if match:
+        product_name = match.group(1).strip()
+        product_name = re.sub(r'(구매자들?의|에\s*대한|관련)\s*$', '', product_name).strip()
+        logger.info(f"제품명 추출 성공 (패턴5-감성분석): {product_name}")
+        return product_name
+
+    # 패턴 6: "XXX 후기" (리뷰 분석용)
+    match = re.search(r'^([가-힣A-Za-z0-9\s]+?)\s*후기', user_message)
+    if match:
+        product_name = match.group(1).strip()
+        product_name = re.sub(r'(구매자들?의|에\s*대한|관련)\s*$', '', product_name).strip()
+        logger.info(f"제품명 추출 성공 (패턴6-후기): {product_name}")
+        return product_name
+
+    # 패턴 7: "XXX 평가" (리뷰 분석용)
+    match = re.search(r'^([가-힣A-Za-z0-9\s]+?)\s*평가', user_message)
+    if match:
+        product_name = match.group(1).strip()
+        product_name = re.sub(r'(구매자들?의|에\s*대한|관련)\s*$', '', product_name).strip()
+        logger.info(f"제품명 추출 성공 (패턴7-평가): {product_name}")
+        return product_name
+
+    # 패턴 8: "XXX의 리뷰" (소유격 형태)
+    match = re.search(r'^([가-힣A-Za-z0-9\s]+?)의\s*리뷰', user_message)
+    if match:
+        product_name = match.group(1).strip()
+        logger.info(f"제품명 추출 성공 (패턴8-소유격): {product_name}")
+        return product_name
+
+    # 패턴 9: "XXX를/을 분석해줘" (일반 분석 요청)
+    match = re.search(r'^([가-힣A-Za-z0-9\s]+?)[을를]\s*분석', user_message)
+    if match:
+        product_name = match.group(1).strip()
+        product_name = re.sub(r'(구매자들?의|에\s*대한|관련)\s*$', '', product_name).strip()
+        logger.info(f"제품명 추출 성공 (패턴9-분석): {product_name}")
         return product_name
 
     # 실패 시 None

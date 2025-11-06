@@ -2,18 +2,25 @@
 에이전트 라우터
 사용자 메시지에서 키워드를 감지해 적절한 에이전트로 라우팅
 """
+from app.agents.synthesis_agent import run_agent as run_synthesis  # ✅ 활성화
+from app.agents.competitor_agent import run_agent as run_competitor  # ✅ 활성화
+from app.agents.review_agent import run_agent as run_review  # ✅ 활성화
+from app.agents.segment_agent import run_agent as run_segment  # ✅ 활성화
+from app.agents.ad_copy_agent import run_agent as run_ad  # ✅ 활성화
+from app.agents.trend_agent import run_agent as run_trend  # ✅ 활성화
 import logging
+import json
 from typing import Dict, Any, Optional
+
+from app.db.session import get_db
+from app.db.crud import append_message, get_messages_by_session
 
 logger = logging.getLogger(__name__)
 
+AGENT_MARKER = "__agent__"
+
 
 # 에이전트 임포트는 파일 생성 후 활성화
-# from app.agents.trend_agent import run_agent as run_trend
-# from app.agents.ad_copy_agent import run_agent as run_ad
-from app.agents.segment_agent import run_agent as run_segment  # ✅ 활성화
-# from app.agents.review_agent import run_agent as run_review
-# from app.agents.competitor_agent import run_agent as run_competitor
 
 
 # 키워드 → 에이전트 매핑
@@ -25,7 +32,7 @@ AGENT_MAP = {
         "description": "특정 키워드나 제품의 트렌드를 분석합니다."
     },
     "ad_copy": {
-        "keywords": ["광고", "문구", "카피", "헤드라인", "슬로건", "마케팅"],
+        "keywords": ["광고", "문구", "카피", "헤드라인", "슬로건"],
         "runner": None,  # run_ad로 교체
         "name": "광고 문구 생성",
         "description": "제품/서비스에 맞는 광고 문구를 생성합니다."
@@ -47,6 +54,12 @@ AGENT_MAP = {
         "runner": None,  # run_competitor로 교체
         "name": "경쟁사 분석",
         "description": "경쟁 제품/서비스를 분석하고 비교합니다."
+    },
+    "synthesis": {
+        "keywords": ["종합", "통합", "전체", "보고서", "정리", "마케팅 전략", "전략 보고서"],
+        "runner": None,  # run_synthesis로 교체
+        "name": "마케팅 전략 종합 보고서",
+        "description": "모든 분석 결과를 종합하여 통합 마케팅 전략을 제시합니다."
     }
 }
 
@@ -121,6 +134,14 @@ def route_to_agent(session_id: str, user_message: str) -> Dict[str, Any]:
     # 태스크 감지
     task_key = detect_task(user_message)
 
+    # 키워드가 없으면 멀티턴 대화 지원 (이전 에이전트 재사용)
+    if not task_key and session_id:
+        if _is_continuation_request(user_message):
+            remembered = _load_last_agent(session_id)
+            if remembered:
+                logger.info(f"키워드 없음 → 이전 에이전트 재사용: {remembered}")
+                task_key = remembered
+
     # 매칭되는 태스크가 없으면 안내 메시지
     if not task_key:
         return {
@@ -156,6 +177,9 @@ def route_to_agent(session_id: str, user_message: str) -> Dict[str, Any]:
     try:
         result = agent_runner(session_id, user_message)
         logger.info(f"에이전트 완료: {task_key}")
+        # 에이전트 성공 시 세션에 기록 (멀티턴 대화 지원)
+        if result.get("success"):
+            _remember_last_agent(result["session_id"], task_key)
         return result
     except Exception as e:
         logger.error(f"에이전트 실행 실패 ({task_key}): {e}", exc_info=True)
@@ -169,8 +193,61 @@ def route_to_agent(session_id: str, user_message: str) -> Dict[str, Any]:
 
 
 # 팀원이 에이전트 구현 후 활성화할 코드:
-# AGENT_MAP["trend"]["runner"] = run_trend
-# AGENT_MAP["ad_copy"]["runner"] = run_ad
+AGENT_MAP["trend"]["runner"] = run_trend  # ✅ 활성화
+AGENT_MAP["ad_copy"]["runner"] = run_ad  # ✅ 활성화
 AGENT_MAP["segment"]["runner"] = run_segment  # ✅ 활성화
-# AGENT_MAP["review"]["runner"] = run_review
-# AGENT_MAP["competitor"]["runner"] = run_competitor
+AGENT_MAP["review"]["runner"] = run_review  # ✅ 활성화
+AGENT_MAP["competitor"]["runner"] = run_competitor  # ✅ 활성화
+AGENT_MAP["synthesis"]["runner"] = run_synthesis  # ✅ 활성화
+
+
+def _remember_last_agent(session_id: str, task_key: str) -> None:
+    """세션에 마지막으로 사용한 에이전트를 기록"""
+    if not session_id or not task_key:
+        return
+
+    payload = json.dumps({"task": task_key})
+    marker = f"{AGENT_MARKER}:{payload}"
+
+    with get_db() as db:
+        append_message(db, session_id, "system", marker)
+
+
+def _load_last_agent(session_id: str) -> Optional[str]:
+    """세션에서 마지막으로 기록된 에이전트 키를 불러옴"""
+    if not session_id:
+        return None
+
+    try:
+        with get_db() as db:
+            rows = [
+                (msg.role, msg.content)
+                for msg in get_messages_by_session(db, session_id)
+            ]
+    except Exception as exc:
+        logger.warning(f"이전 에이전트 조회 실패: {exc}")
+        return None
+
+    for role, content in reversed(rows):
+        if role != "system":
+            continue
+        if not content.startswith(AGENT_MARKER):
+            continue
+        payload = content[len(AGENT_MARKER) + 1:].strip()
+        try:
+            data = json.loads(payload)
+            task = data.get("task")
+            if task in AGENT_MAP:
+                return task
+        except json.JSONDecodeError:
+            continue
+    return None
+
+
+def _is_continuation_request(user_message: str) -> bool:
+    """
+    '추가로...', '더...', '또...'와 같은 후속 요청 여부 판단
+    """
+    lowered = user_message.lower()
+    keywords = ["추가", "더", "또", "계속", "more", "another", "extra"]
+    return any(keyword in lowered for keyword in keywords)

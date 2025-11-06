@@ -56,5 +56,28 @@ class RagDoc(Base):
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
 
+class TaskResult(Base):
+    """태스크 실행 결과 저장 테이블 (종합 보고서용)"""
+    __tablename__ = 'task_results'
+
+    id = Column(String(36), primary_key=True, default=generate_uuid)
+    session_id = Column(String(36), ForeignKey('sessions.id'), nullable=False, index=True)
+    task_type = Column(String(20), nullable=False)  # 'trend', 'ad_copy', 'segment', 'review', 'competitor'
+
+    # 핵심: 구조화된 데이터 (JSON)
+    result_data = Column(JSON, nullable=False)
+
+    # 메타데이터
+    product_name = Column(String(200), nullable=True)  # 분석 대상 제품명
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+    # 생성된 파일 경로 (선택)
+    pdf_path = Column(String(500), nullable=True)
+    html_path = Column(String(500), nullable=True)
+
+    # 관계 정의
+    session = relationship("Session", backref="task_results")
+
+
 # FTS5 가상 테이블은 raw SQL로 생성 (session.py에서 처리)
 # CREATE VIRTUAL TABLE rag_fts USING fts5(doc_id, title, content)
