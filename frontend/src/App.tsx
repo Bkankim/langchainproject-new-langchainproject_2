@@ -16,9 +16,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // 세션 ID를 로컬스토리지에 저장/복원
+  // 세션 ID를 세션스토리지에 저장/복원 (탭 별 독립 세션 유지)
   useEffect(() => {
-    const savedSessionId = localStorage.getItem('sessionId');
+    const savedSessionId = sessionStorage.getItem('sessionId');
     if (savedSessionId) {
       setSessionId(savedSessionId);
     }
@@ -46,7 +46,7 @@ function App() {
       // 세션 ID 저장
       if (!sessionId) {
         setSessionId(response.session_id);
-        localStorage.setItem('sessionId', response.session_id);
+        sessionStorage.setItem('sessionId', response.session_id);
       }
 
       // 어시스턴트 메시지 추가
@@ -83,7 +83,7 @@ function App() {
   const handleNewChat = () => {
     setMessages([]);
     setSessionId(null);
-    localStorage.removeItem('sessionId');
+    sessionStorage.removeItem('sessionId');
   };
 
   return (
