@@ -7,6 +7,7 @@
 이 프로젝트는 **6가지 커머스 마케팅 태스크**를 수행하는 AI 에이전트 시스템입니다:
 
 [📄 프로젝트 발표 자료 (PDF) 보기](assets/presentation.pdf)
+
 [📄 경쟁사 분석 보고서 샘플 (HTML) 보기](assets/sample_report.html)
 
 1. **소비 트렌드 분석** - 제품/키워드의 트렌드 분석
