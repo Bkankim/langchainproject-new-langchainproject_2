@@ -1,0 +1,659 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경쟁사 분석 보고서 - 아이폰 16 pro</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+            border-left: 4px solid #4CAF50;
+            padding-left: 15px;
+        }
+        .metadata {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .source-info {
+            background-color: #e8f5e9;
+            border: 1px solid #4CAF50;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .source-info h3 {
+            margin-top: 0;
+            color: #2e7d32;
+        }
+        .source-item {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: white;
+            border-radius: 3px;
+        }
+        .source-item .product-name {
+            font-weight: bold;
+            color: #333;
+        }
+        .source-item .provider {
+            color: #4CAF50;
+            font-size: 0.9em;
+        }
+        .source-item .reliability {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            margin-left: 10px;
+        }
+        .source-item .reliability.official {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .source-item .reliability.mock {
+            background-color: #FF9800;
+            color: white;
+        }
+        .source-item .timestamp {
+            color: #888;
+            font-size: 0.85em;
+        }
+        .swot {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .swot-item {
+            border: 2px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .swot-item.strengths {
+            border-color: #4CAF50;
+            background-color: #f1f8f4;
+        }
+        .swot-item.weaknesses {
+            border-color: #f44336;
+            background-color: #fef1f1;
+        }
+        .swot-item.opportunities {
+            border-color: #2196F3;
+            background-color: #f1f6fb;
+        }
+        .swot-item.threats {
+            border-color: #FF9800;
+            background-color: #fff8f1;
+        }
+        .swot-item h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .swot-item ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .swot-item li {
+            margin: 8px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .strategy {
+            background-color: #fffbf0;
+            border-left: 4px solid #FF9800;
+            padding: 20px;
+            margin: 20px 0;
+            white-space: pre-wrap;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #888;
+            font-size: 0.9em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>경쟁사 분석 보고서</h1>
+
+        <div class="metadata">
+            <p><strong>생성일시:</strong> 2025-11-02 19:06:37</p>
+            <p><strong>분석 대상:</strong> 아이폰 16 pro</p>
+            <p><strong>경쟁사:</strong> 갤럭시 S25 울트라, 구글 픽셀 9 프로, 샤오미 14 프로</p>
+            <p><strong>제품 카테고리:</strong> 스마트폰</p>
+        </div>
+
+        <div class="source-info">
+            <h3>📊 데이터 출처</h3>
+            
+        <div class="source-item">
+            <div class="product-name">아이폰 16 프로 256GB [자급제]</div>
+            <div class="provider">출처: 네이버 쇼핑 API <span class="reliability official">공식 API</span></div>
+            <div style="font-size: 0.85em; color: #666;">URL: <a href="https://search.shopping.naver.com/catalog/53599506392" target="_blank">https://search.shopping.naver.com/catalog/53599506392...</a></div>
+            <div class="timestamp">수집 시간: 2025-11-02 19:06:25</div>
+        </div>
+        
+        <div class="source-item">
+            <div class="product-name">삼성전자 갤럭시 S25 울트라 5G 512GB [자급제]</div>
+            <div class="provider">출처: 네이버 쇼핑 API <span class="reliability official">공식 API</span></div>
+            <div style="font-size: 0.85em; color: #666;">URL: <a href="https://search.shopping.naver.com/catalog/52628834304" target="_blank">https://search.shopping.naver.com/catalog/52628834304...</a></div>
+            <div class="timestamp">수집 시간: 2025-11-02 19:06:26</div>
+        </div>
+        
+        <div class="source-item">
+            <div class="product-name">구글 픽셀9 프로 XL 5G 16램 512GB</div>
+            <div class="provider">출처: 네이버 쇼핑 API <span class="reliability official">공식 API</span></div>
+            <div style="font-size: 0.85em; color: #666;">URL: <a href="https://smartstore.naver.com/main/products/12295543074" target="_blank">https://smartstore.naver.com/main/products/12295543074...</a></div>
+            <div class="timestamp">수집 시간: 2025-11-02 19:06:26</div>
+        </div>
+        
+        <div class="source-item">
+            <div class="product-name">[국내정발]샤오미 레드미노트14PRO 자급제 홍미노트14프로 5G/LTE 국내정식판</div>
+            <div class="provider">출처: 네이버 쇼핑 API <span class="reliability official">공식 API</span></div>
+            <div style="font-size: 0.85em; color: #666;">URL: <a href="https://smartstore.naver.com/main/products/11329553970" target="_blank">https://smartstore.naver.com/main/products/11329553970...</a></div>
+            <div class="timestamp">수집 시간: 2025-11-02 19:06:26</div>
+        </div>
+        
+        </div>
+
+        <h2>1. 제품 비교</h2>
+        <table><thead><tr><th>제품명</th><th>브랜드</th><th>가격</th><th>유통채널</th><th>리뷰</th></tr></thead><tbody>
+        <tr>
+            <td>아이폰 16 프로 256GB [자급제]</td>
+            <td>Apple</td>
+            <td>1,849,990원</td>
+            <td>네이버</td>
+            <td>0개 (0.0점)</td>
+        </tr>
+        
+        <tr>
+            <td>삼성전자 갤럭시 S25 울트라 5G 512GB [자급제]</td>
+            <td>갤럭시</td>
+            <td>1,579,510원</td>
+            <td>네이버</td>
+            <td>0개 (0.0점)</td>
+        </tr>
+        
+        <tr>
+            <td>구글 픽셀9 프로 XL 5G 16램 512GB</td>
+            <td>구글</td>
+            <td>1,332,000원</td>
+            <td>HKPHONE</td>
+            <td>0개 (0.0점)</td>
+        </tr>
+        
+        <tr>
+            <td>[국내정발]샤오미 레드미노트14PRO 자급제 홍미노트14프로 5G/LTE 국내정식판</td>
+            <td>샤오미</td>
+            <td>399,300원</td>
+            <td>주식회사 에이루트</td>
+            <td>0개 (0.0점)</td>
+        </tr>
+        </tbody></table>
+
+        <h2>2. 벤치마크 분석</h2>
+        
+<div style="max-width: 800px; margin: 20px auto;">
+    <h3 style="text-align: center; margin-bottom: 20px;">📊 벤치마크 비교 차트</h3>
+    <canvas id="benchmarkRadarChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+const ctx = document.getElementById('benchmarkRadarChart');
+const chartData = {"labels": ["가격 경쟁력", "브랜드 파워", "종합 점수"], "datasets": [{"label": "아이폰 16 프로 256GB [자급제]", "data": [21.6, 95, 58.3]}, {"label": "삼성전자 갤럭시 S25 울트라 5G 512GB [자급제]", "data": [25.3, 50, 37.6]}, {"label": "구글 픽셀9 프로 XL 5G 16램 512GB", "data": [30.0, 50, 40.0]}, {"label": "[국내정발]샤오미 레드미노트14PRO 자급제 홍미노트14프로 5G/LTE 국내정식판", "data": [100.0, 75, 87.5]}]};
+
+new Chart(ctx, {
+    type: 'radar',
+    data: chartData,
+    options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        scales: {
+            r: {
+                beginAtZero: true,
+                max: 100,
+                ticks: {
+                    stepSize: 20
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                position: 'bottom'
+            },
+            title: {
+                display: false
+            }
+        }
+    }
+});
+</script>
+
+    <h3 style="margin-top: 30px;">📋 상세 점수표</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>제품명</th>
+                <th>가격 경쟁력</th>
+                <th>브랜드 파워</th>
+                <th>종합 점수</th>
+            </tr>
+        </thead>
+        <tbody>
+    
+            <tr>
+                <td><strong>아이폰 16 프로 256GB [자급제]</strong></td>
+                <td>21.6점</td>
+                <td>95점</td>
+                <td><strong>58.3점</strong></td>
+            </tr>
+        
+            <tr>
+                <td><strong>삼성전자 갤럭시 S25 울트라 5G 512GB [자급제]</strong></td>
+                <td>25.3점</td>
+                <td>50점</td>
+                <td><strong>37.6점</strong></td>
+            </tr>
+        
+            <tr>
+                <td><strong>구글 픽셀9 프로 XL 5G 16램 512GB</strong></td>
+                <td>30.0점</td>
+                <td>50점</td>
+                <td><strong>40.0점</strong></td>
+            </tr>
+        
+            <tr>
+                <td><strong>[국내정발]샤오미 레드미노트14PRO 자급제 홍미노트14프로 5G/LTE 국내정식판</strong></td>
+                <td>100.0점</td>
+                <td>75점</td>
+                <td><strong>87.5점</strong></td>
+            </tr>
+        
+        </tbody>
+    </table>
+    <p style="color: #666; font-size: 0.9em; margin-top: 10px;">
+        * 모든 점수는 0-100점 척도입니다. 종합 점수는 검증된 지표(가격, 브랜드)의 평균입니다.
+    </p>
+    <p style="color: #666; font-size: 0.9em; margin-top: 5px;">
+        ⚠️ 참고: 네이버 쇼핑 API는 리뷰/평점 데이터를 제공하지 않습니다.
+    </p>
+    
+    <div style="background-color: #e3f2fd; padding: 20px; border-radius: 8px; border-left: 5px solid #2196f3; margin: 25px 0;">
+        <h3 style="color: #1565c0; margin-top: 0;">📊 온라인 반응도 (참고)</h3>
+        <p style="color: #666; font-size: 0.95em; line-height: 1.6; margin-bottom: 15px;">
+            <strong>중요:</strong> 실제 리뷰 데이터가 아닌 판매 가능성과 블로그/카페 언급량을 결합한 지표입니다.<br>
+            <strong>⚠️ 순위 산정에는 반영하지 않으며</strong>, 온라인 관심도 참고용으로만 제공됩니다.
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>제품명</th>
+                    <th>온라인 반응도</th>
+                    <th>블로그+카페 언급</th>
+                    <th>세부 지표</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+                <tr>
+                    <td><strong>아이폰 16 프로 256GB [자급제]</strong></td>
+                    <td>
+                        <span style="display: inline-block; padding: 5px 12px; background-color: #4caf50;
+                                     color: white; border-radius: 4px; font-weight: bold;">
+                            높음
+                        </span>
+                    </td>
+                    <td>443,824건</td>
+                    <td>
+                <small>
+                    판매가능성: 56.0점<br>
+                    UGC점수: 100점
+                </small>
+            </td>
+                </tr>
+            
+                <tr>
+                    <td><strong>삼성전자 갤럭시 S25 울트라 5G 512GB [자급제]</strong></td>
+                    <td>
+                        <span style="display: inline-block; padding: 5px 12px; background-color: #ff9800;
+                                     color: white; border-radius: 4px; font-weight: bold;">
+                            보통
+                        </span>
+                    </td>
+                    <td>135,808건</td>
+                    <td>
+                <small>
+                    판매가능성: 26.5점<br>
+                    UGC점수: 100점
+                </small>
+            </td>
+                </tr>
+            
+                <tr>
+                    <td><strong>구글 픽셀9 프로 XL 5G 16램 512GB</strong></td>
+                    <td>
+                        <span style="display: inline-block; padding: 5px 12px; background-color: #ff9800;
+                                     color: white; border-radius: 4px; font-weight: bold;">
+                            보통
+                        </span>
+                    </td>
+                    <td>21,273건</td>
+                    <td>
+                <small>
+                    판매가능성: 26.5점<br>
+                    UGC점수: 100점
+                </small>
+            </td>
+                </tr>
+            
+                <tr>
+                    <td><strong>[국내정발]샤오미 레드미노트14PRO 자급제 홍미노트14프로 5G/LTE 국내정식판</strong></td>
+                    <td>
+                        <span style="display: inline-block; padding: 5px 12px; background-color: #ff9800;
+                                     color: white; border-radius: 4px; font-weight: bold;">
+                            보통
+                        </span>
+                    </td>
+                    <td>3,717건</td>
+                    <td>
+                <small>
+                    판매가능성: 44.0점<br>
+                    UGC점수: 100점
+                </small>
+            </td>
+                </tr>
+            
+            </tbody>
+        </table>
+        <p style="color: #666; font-size: 0.85em; margin-top: 15px; line-height: 1.6;">
+            <strong>계산 방식:</strong> 판매 가능성(유통채널, 브랜드, 가격, 검색순위) 50% +
+            블로그/카페 언급량 50%를 결합하여 레벨 분류 (높음 ≥75점, 보통 50-74점, 낮음 <50점)
+        </p>
+    </div>
+    
+
+        <h2>3. 시장점유율 분석</h2>
+        
+<div style="max-width: 800px; margin: 20px auto;">
+    <h3 style="text-align: center; margin-bottom: 20px;">📊 시장점유율 분석</h3>
+    <canvas id="marketShareChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+const marketCtx = document.getElementById('marketShareChart');
+const marketData = {"labels": ["아이폰 16 프로 256GB [자급제]", "삼성전자 갤럭시 S25 울트라 5G 512GB [자급제]", "구글 픽셀9 프로 XL 5G 16램 512GB", "[국내정발]샤오미 레드미노트14PRO 자급제 홍미노트14프로 5G/LTE 국내정식판"], "shares": [21.8, 74.9, 2.5, 0.8]};
+
+new Chart(marketCtx, {
+    type: 'pie',
+    data: {
+        labels: marketData.labels,
+        datasets: [{
+            data: marketData.shares,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(255, 206, 86, 0.8)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(153, 102, 255, 0.8)'
+            ],
+            borderWidth: 2,
+            borderColor: '#fff'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+            legend: {
+                position: 'right',
+                labels: {
+                    padding: 15,
+                    font: {
+                        size: 12
+                    }
+                }
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        return context.label + ': ' + context.parsed + '%';
+                    }
+                }
+            }
+        }
+    }
+});
+</script>
+
+    <h3 style="margin-top: 30px;">📊 점유율 상세</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>제품명</th>
+                <th>시장 점유율</th>
+                <th>순위</th>
+            </tr>
+        </thead>
+        <tbody>
+    
+            <tr>
+                <td><strong>삼성전자 갤럭시 S25 울트라 5G 512GB [자급제]</strong></td>
+                <td><strong>74.9%</strong></td>
+                <td>🥇 1위</td>
+            </tr>
+        
+            <tr>
+                <td><strong>아이폰 16 프로 256GB [자급제]</strong></td>
+                <td><strong>21.8%</strong></td>
+                <td>🥈 2위</td>
+            </tr>
+        
+            <tr>
+                <td><strong>구글 픽셀9 프로 XL 5G 16램 512GB</strong></td>
+                <td><strong>2.5%</strong></td>
+                <td>🥉 3위</td>
+            </tr>
+        
+            <tr>
+                <td><strong>[국내정발]샤오미 레드미노트14PRO 자급제 홍미노트14프로 5G/LTE 국내정식판</strong></td>
+                <td><strong>0.8%</strong></td>
+                <td> 4위</td>
+            </tr>
+        
+        </tbody>
+    </table>
+
+    <!-- StatCounter 출처 및 라이선스 -->
+    <div style="background-color: #e8f5e9; padding: 20px; border-radius: 8px; border-left: 5px solid #4caf50; margin: 25px 0;">
+        <h4 style="color: #2e7d32; margin-top: 0;">📊 데이터 출처</h4>
+        <p style="color: #666; line-height: 1.8; margin-bottom: 10px;">
+            시장점유율 데이터는 <strong><a href="https://gs.statcounter.com" target="_blank" style="color: #2e7d32;">StatCounter GlobalStats</a></strong>의
+            실제 웹 트래픽 데이터를 기반으로 계산되었습니다.
+        </p>
+        <p style="color: #666; font-size: 0.9em; margin-bottom: 0;">
+            <strong>라이선스:</strong> <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" style="color: #2e7d32;">CC BY-SA 3.0</a><br>
+            <strong>데이터 범위:</strong> 한국 모바일 시장 (전월 기준)<br>
+            <strong>방법론:</strong> StatCounter 웹 트래픽 데이터 (95%) + Naver Shopping 트렌드 (5% 조정)
+        </p>
+    </div>
+
+    <!-- 데이터 해석 주의사항 -->
+    <div style="background-color: #fff3e0; padding: 20px; border-radius: 8px; border-left: 5px solid #ff9800; margin: 25px 0;">
+        <h4 style="color: #e65100; margin-top: 0; display: flex; align-items: center;">
+            <span style="font-size: 1.3em; margin-right: 8px;">⚠️</span>
+            데이터 해석 주의사항
+        </h4>
+        <ul style="color: #666; line-height: 1.8; margin-bottom: 0; padding-left: 20px;">
+            <li><strong>웹 트래픽 데이터 기반</strong> 추정치로, StatCounter GlobalStats 및 Naver Shopping 데이터를 활용합니다.</li>
+            <li>실제 판매량 통계가 아닌 <strong>온라인 활동 기반 추정</strong>이므로 실제 시장점유율과 차이가 있을 수 있습니다.</li>
+            <li>오프라인 중심 브랜드(예: 삼성, Apple)는 과소평가, 온라인 중심 브랜드(예: Xiaomi)는 과대평가 가능성이 있습니다.</li>
+            <li><strong>🚫 리뷰/평점 데이터 제약</strong>: 네이버 쇼핑 API는 리뷰/평점을 제공하지 않습니다.
+                대신 <strong>"온라인 반응도"</strong> 지표(판매 가능성 + 블로그/카페 언급량)를 제공하나,
+                <strong style="color: #d32f2f;">실제 리뷰가 아니므로 순위 산정에는 반영하지 않습니다.</strong>
+            </li>
+            <li><strong>✅ 권장 활용</strong>: 온라인 마케팅 전략, 디지털 트렌드 분석, 온라인 경쟁 포지셔닝, 블로그/카페 관심도 파악</li>
+            <li><strong>❌ 주의 활용</strong>: 투자자 보고서, 전체 시장 규모 추정, 오프라인 매장 전략, 실제 사용자 만족도 평가</li>
+        </ul>
+    </div>
+
+    <p style="color: #666; font-size: 0.9em; margin-top: 15px; padding: 12px; background-color: #f5f5f5; border-radius: 5px;">
+        <strong>📊 계산 방식:</strong> <strong>Anchor-Based Calibration</strong> 방식을 사용합니다.
+        StatCounter GlobalStats의 실제 시장점유율(95%)을 앵커로 삼고, Naver Shopping 데이터(유통 채널, 리뷰)를 활용한 ±5% 미세 조정을 적용합니다.
+        <br>
+        <strong>🌐 주요 데이터 소스:</strong>
+        <a href="https://gs.statcounter.com" target="_blank" style="color: #4caf50;">StatCounter GlobalStats</a> (웹 트래픽) +
+        Naver Shopping API (온라인 쇼핑 트렌드)
+    </p>
+    
+    <h3 style="margin-top: 30px;">🎯 시장 포지셔닝 분석</h3>
+    <div style="background-color: #f9f9f9; padding: 20px; border-radius: 5px; border-left: 4px solid #4CAF50;">
+        <p style="white-space: pre-line;">국내 스마트폰 시장은 삼성 갤럭시가 74.9% 점유율로 완벽한 독점 구조를 형성한 반면, 애플은 프리미엄 시장에서 21.8%로 2위를 유지하고 있습니다. 가격대별로는 삼성 갤럭시 S25 울트라가 프리미엄 기능을 중저가(1,579,510원)로 제공하면서 시장을 재편했습니다. 주목할 점은 1위 제품과 2위 제품 간 점유율 격차(53.1%p)가 매우 커서 신규 진입자나 기존 경쟁사의 추격이 어려운 구조입니다. 다만 샤오미와 같은 저가 제품이 극저가 시장에서 잠재 고객층을 공략하며, 향후 시장 다변화 가능성을 보여줍니다. 브랜드 전략 측면에서는 국내 소비자의 삼성에 대한 강한 선호도와 A/S 인프라 신뢰도가 시장 구도 형성의 핵심 요인으로 분석됩니다.</p>
+    </div>
+    
+    <h4 style="margin-top: 20px;">📈 시장 리더</h4>
+    <div style="background-color: #e8f5e9; padding: 15px; border-radius: 5px;">
+        <p><strong>삼성전자 갤럭시 S25 울트라 5G 512GB [자급제]</strong> (74.9%)</p>
+        <p style="color: #666;">압도적인 시장 점유율(74.9%)로 시장을 주도하고 있습니다. 삼성 브랜드의 강력한 시장 인지도와 5G/대용량 스토리지 등 프리미엄 기능을 중저가(프리미엄 대비 13% 저렴)로 제공하는 가격 전략이 성공한 것으로 보입니다. 국내 시장에서 특히 높은 충성도를 바탕으로 경쟁사 대비 압도적인 위치를 차지하고 있습니다.</p>
+    </div>
+    
+    <h4 style="margin-top: 20px;">⚔️ 주요 도전자</h4>
+    
+    <div style="background-color: #fff3e0; padding: 15px; border-radius: 5px; margin-bottom: 10px;">
+        <p><strong>아이폰 16 프로 256GB [자급제]</strong> (21.8%)</p>
+        <p style="color: #666;">프리미엄 가격대에서도 안정적인 점유율(21.8%)을 유지하며 시장 리더의 유일한 실질적 경쟁자입니다. Apple 생태계의 완결성과 글로벌 브랜드 파워가 강점이지만, 국내에서는 삼성 대비 상대적으로 높은 가격(18.5% 더 비쌈)이 진입 장벽으로 작용하는 것으로 분석됩니다.</p>
+    </div>
+    
+    <div style="background-color: #fff3e0; padding: 15px; border-radius: 5px; margin-bottom: 10px;">
+        <p><strong>구글 픽셀9 프로 XL 5G 16램 512GB</strong> (2.5%)</p>
+        <p style="color: #666;">프리미엄 기능을 중상위 가격대(아이폰 대비 27% 저렴)에 제공하는 차별화된 포지셔닝입니다. 카메라 성능과 순정 안드로이드 OS로 테크 헤비 유저를 타겟팅하지만, 국내 시장에서의 브랜드 인지도 부족이 성장 제약 요인으로 보입니다.</p>
+    </div>
+    
+
+        <h2>4. SWOT 분석</h2>
+        <div class="swot">
+            <div class="swot-item strengths">
+                <h3>강점 (Strengths)</h3>
+                <ul><li>Apple 브랜드의 프리미엄 기술력과 높은 충성도 기반</li>
+<li>플래그십 모델로 초기 시장 기대치 집중 효과</li>
+<li>유통채널 '네이버'를 통해 신뢰성 있는 온라인 노출</li></ul>
+            </div>
+            <div class="swot-item weaknesses">
+                <h3>약점 (Weaknesses)</h3>
+                <ul><li>경쟁사 평균 대비 67.5% 높은 가격</li>
+<li>HKPHONE, 에이루트 등 다중 채널 대비 네이버 단일 채널 한정</li>
+<li>출시 전 리뷰 부재로 가격 대비 성능 검증 불가</li></ul>
+            </div>
+            <div class="swot-item opportunities">
+                <h3>기회 (Opportunities)</h3>
+                <ul><li>경쟁사 대비 프리미엄 포지셔닝을 활용한 고가 시장 독점 가능</li>
+<li>네이버 채널 내 AI/플래그십 트렌드 연계 마케팅 확대</li></ul>
+            </div>
+            <div class="swot-item threats">
+                <h3>위협 (Threats)</h3>
+                <ul><li>샤오미/구글의 가격 인하를 통한 가격 민감층 유입 가능성</li>
+<li>갤럭시의 경쟁 플래그십 모델로 인한 고가 시장 점유율 분산 위험</li></ul>
+            </div>
+        </div>
+
+        <h2>5. 차별화 전략</h2>
+        <div class="strategy">아래는 SWOT 분석 결과를 기반으로 한 **차별화 전략**과 구체적인 액션 아이템입니다.  
+
+---
+
+### 1. **S-O 전략 (강점 + 기회 활용)**  
+**핵심 목표:** 프리미엄 브랜드 이미지와 네이버 채널을 활용해 고가 시장 독점 효과 극대화  
+- **액션 1:** "네이버 라이브 커머스 한정 사전 예약 이벤트"  
+  - 플래그십 모델 출시 전, 네이버 라이브 방송을 통해 **얼리 어답터(25~45세 남성) 대상**으로 한정 수량 예약 판매.  
+  - Apple의 기술력(예: A시리즈 칩셋 성능 비교)을 시각적으로 증명하는 데모 영상 공개.  
+- **액션 2:** "네이버 AI 검색 연동 맞춤형 광고 캠페인"  
+  - "프리미엄 스마트폰 비교" 검색 시 자동으로 노출되는 AI 광고 생성.  
+  - 갤럭시/샤오미 대비 Apple의 내구성/소프트웨어 최적화 데이터를 인포그래픽으로 강조.  
+
+---
+
+### 2. **W-O 전략 (약점 보완 + 기회 활용)**  
+**핵심 목표:** 가격 장벽 해소 및 네이버 채널 한계 극복  
+- **액션 1:** "네이버 페이 36개월 무이자 할부 + 리퍼브 신제품 보증 프로그램"  
+  - 경쟁사 대비 높은 가격 문제를 완화하기 위해 **장기 할부**와 **리퍼브 제품 1년 무상 보증** 패키지 제공.  
+  - 리뷰 부재 문제 해결을 위해 **출시 후 1개월 간 사용 후기 작성 시 10만 원 네이버 포인트** 지급.  
+- **액션 2:** "네이버 블로그 체험단 모집"  
+  - IT 전문 블로그 운영자 50명 선정, **출시 전 제품 체험 기회 제공** 후 네이버 포스트에 리뷰 게시.  
+
+---
+
+### 3. **S-T 전략 (강점 + 위협 대응)**  
+**핵심 목표:** 경쟁사의 가격/점유율 공세에 Apple의 기술력으로 대응  
+- **액션 1:** "갤럭시 vs Apple 비교 체험존 (네이버 예약제)"  
+  - 오프라인 팝업스토어에서 갤럭시 최신 모델과 Apple 제품의 **실제 성능 테스트**(배터리 소모, 카메라 저조도 촬영) 비교.  
+  - 체험 후 SNS 공유 시 **Apple Care+ 1년 무료** 쿠폰 제공.  
+- **액션 2:** "샤오미/구글 대비 내구성 강조 캠페인"  
+  - 네이버 쇼핑 검색 페이지에 **"5년 이상 사용 사례"** 동영상 광고 게재.  
+  - "저가폰 2대 vs Apple 1대" TCO(총 소유 비용) 비교 자료 배포.  
+
+---
+
+### 4. **W-T 전략 (약점 + 위협 최소화)**  
+**핵심 목표:** 가격 민감층 유입 차단 및 리뷰 부재 리스크 관리  
+- **액션 1:** "네이버 지식인 Q&A 사전 대응 시스템"  
+  - "고가 스마트폰 추천" 키워드 모니터링 후 **전문 상담원이 Apple의 가성비 장점**으로 답변 유도.  
+  - 갤럭시/샤오미 대비 **리셀 가치** 데이터(예: 3년 후 평균 판매 가격)를 실시간으로 제시.  
+- **액션 2:** "출시 후 48시간 내 실시간 리뷰 라이브"  
+  - 유명 테크 유튜버 3명과 협업해 **네이버 TV**에서 개봉기/초기 사용기 생중계.  
+  - 댓글 질의응답을 통해 성능 검증 부재 문제 해소.  
+
+--- 
+
+### **추가 고려사항**  
+- 모든 액션은 **네이버 분석 툴**로 실시간 성과 모니터링 (클릭률, 전환율, 리뷰 수).  
+- "가격 민감도 높은 20대 타깃"에는 **학생 할인 프로그램** 병행 검토.</div>
+
+        <div class="footer">
+            <p>본 보고서는 AI 기반 분석 결과이며 참고용으로만 사용하시기 바랍니다.</p>
+            <p>커머스 마케팅 AI 에이전트 - 경쟁사 분석</p>
+        </div>
+    </div>
+</body>
+</html>
