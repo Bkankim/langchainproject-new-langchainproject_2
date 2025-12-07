@@ -8,7 +8,7 @@
 
 [📄 프로젝트 발표 자료 (PDF) 보기](assets/presentation.pdf)
 
-[📄 경쟁사 분석 보고서 샘플 (HTML) 보기](assets/sample_report.html)
+[📄 경쟁사 분석 보고서 샘플 (HTML) 보기](https://htmlpreview.github.io/?https://raw.githubusercontent.com/Bkankim/langchainproject-new-langchainproject_2/refs/heads/main/assets/sample_report.html)
 
 1. **소비 트렌드 분석** - 제품/키워드의 트렌드 분석
 2. **광고 문구 생성** - AI 기반 광고 카피 생성
